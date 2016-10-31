@@ -1,0 +1,12 @@
+<div class="ticket-form">
+  <form {{action 'saveTicket' on="submit"}}>
+    <h5>Pair:</h5>
+    {{input value=name required=true}}
+    <h5>Issue:</h5>
+    {{textarea value=content required=true}}
+    <h5>Station:</h5>
+    {{input value=location required=true}}
+    {{input value=currentTime type="hidden"}}
+    <button type="submit"> Submit!</button>
+  </form>
+</div>

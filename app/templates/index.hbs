@@ -1,0 +1,13 @@
+<h1> Help Queue </h1>
+<ul>
+  {{#each model as |ticket|}}
+    <li>
+      {{ticket.name}}
+      {{ticket.time}}
+    </li>
+
+  {{/each}}
+</ul>
+
+
+{{new-ticket saveTicket="saveTicket"}}
