@@ -1,0 +1,10 @@
+<h1> Help Queue </h1>
+<ul>
+  {{#each model as |ticket|}}
+    <li>
+      {{ticket.name}} - {{ticket.content}} - {{ticket.station}} - {{ticket.time}}
+      {{moment-from-now ticket.time interval=1000}}
+    </li>
+
+  {{/each}}
+</ul>

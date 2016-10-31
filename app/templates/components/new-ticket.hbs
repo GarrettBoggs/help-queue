@@ -1,12 +1,31 @@
-<div class="ticket-form">
-  <form {{action 'saveTicket' on="submit"}}>
-    <h5>Pair:</h5>
-    {{input value=name required=true}}
-    <h5>Issue:</h5>
-    {{textarea value=content required=true}}
-    <h5>Station:</h5>
-    {{input value=location required=true}}
-    {{input value=currentTime type="hidden"}}
-    <button type="submit"> Submit!</button>
-  </form>
-</div>
+{{#if helpSent}}
+  <h1>Done</h1>
+{{else}}
+  {{#if spentTime}}
+  <div class="ticket-form">
+    <form {{action 'saveTicket' 'setHelpSent' on="submit"}}>
+      {{input class="form-control" value=name required=true placeholder="Please enter your name"}}
+      {{input  class="form-control" value=location required=true placeholder="Please enter your location"}}
+      {{textarea  class="form-control" value=content required=true placeholder="Give a brief description of issue you are having"}}
+
+      {{input value=currentTime type="hidden"}}
+      <button type="submit"> Help!</button>
+
+    </form>
+  </div>
+  {{else}}
+    {{#if gotPairHelp}}
+      <h2>Have you spent 15 minutes going through through the problem documenting every step?</h2>
+      <button {{action 'setSpentTime'}}>Yes>></button>
+      {{else}}
+        {{#if allStepsTaken}}
+          <h2>Have you asked another pair for help?</h2>
+          <button {{action 'setPairHelp'}}>Yes>></button>
+        {{else}}
+          <h2>Have you gone through all the steps on the Learn How to Program debugging lesson?</h2>
+          <button {{action 'setStepsTaken'}}>Yes>></button>
+
+        {{/if}}
+    {{/if}}
+  {{/if}}
+{{/if}}
